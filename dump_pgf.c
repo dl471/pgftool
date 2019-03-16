@@ -6,7 +6,14 @@
 #include <sys/stat.h>
 
 #include "pgf.h"
-#include "bmp.h"
+#ifdef _MSC_VER
+	#include <windows.h>
+	#include <wingdi.h>
+#else
+	#include "bmp.h" // import struct definitons from "bmp.h" if native Windows headers aren't available
+#endif
+
+
 
 void put_f26(int value)
 {
