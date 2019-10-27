@@ -393,3 +393,21 @@ PGF_FONT *new_pgf_font(void)
 	return pgft;
 }
 
+void free_pgf_font(PGF_FONT *font)
+{
+	if(font){
+		
+		for(int i = 0; i < 65536; i++){
+			PGF_GLYPH *glyph = get_glyph(font, i);
+			if(glyph){
+				free_glyph(font, glyph);
+			}
+			
+		}
+		
+		free(font->ph);
+		free(font);
+		
+		font = 0;
+	}
+}

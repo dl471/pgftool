@@ -21,3 +21,10 @@ BOOL __declspec(dllexport) SaveFont(PGF_FONT *font, char *fileName)
 		return TRUE; 
 	}
 }
+
+VOID __declspec(dllexport) FreeFont(PGF_FONT *font)
+{
+	if (font) {
+		free_pgf_font(font);
+	}
+}
